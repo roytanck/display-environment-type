@@ -8,17 +8,17 @@
 }
 
 #wpadminbar ul li#wp-admin-bar-det_env_type {
-	background-color: #00a0d2;
+	background-color: #0087b1;
 }
 
 #wpadminbar ul li#wp-admin-bar-det_env_type.det-production {
-	background-color: #dc3232;
+	background-color: #b92a2a;
 }
 
 #wpadminbar ul li#wp-admin-bar-det_env_type.det-staging {
-	background-color: #ffba00;
+	background-color: #d79d00;
 }
 
 #wpadminbar ul li#wp-admin-bar-det_env_type.det-development {
-	background-color: #46b450;
+	background-color: #3b9843;
 }
