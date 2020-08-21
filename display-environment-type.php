@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name:       Display Environment Type
- * Plugin URI:        https://example.com/plugins/the-basics/
- * Description:       Handle the basics with this plugin.
+ * Plugin URI:        https://roytanck.com/2020/08/21/new-wordpress-plugin-display-environment-type/
+ * Description:       Display the site's environment type in wp-admin.
  * Version:           1.0
  * Requires at least: 5.5
  * Requires PHP:      5.6
