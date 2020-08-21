@@ -19,6 +19,7 @@
 /* Admin bar background colors */
 
 #wpadminbar ul li#wp-admin-bar-det_env_type {
+	pointer-events: none;
 	background-color: #0087b1;
 }
 
