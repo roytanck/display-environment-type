@@ -93,20 +93,21 @@ if( ! class_exists( 'Display_Environment_Type' ) ){
 		 * Determine whether or not to display the environment type.
 		 */
 		private function check_display() {
-			// Don't display if no user logged in.
-			if( ! is_user_logged_in() ) {
-				return false;
-			}
+			// Set the return value to the default (false).
+			$display = false;
 			// Always display if in wp-admin.
 			if( is_admin() ) {
-				return true;
+				$display = true;
+			} else {
+				// Display on the front-end only if user has certain capability.
+				if( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
+					$display = true;
+				}
 			}
-			// Display on the front-end only if user has certain capability.
-			if( current_user_can( 'manage_options' ) ) {
-				return true;
-			}
-			// Default: false.
-			return false;
+			// Filter the return value (boolean).
+			$display = ( apply_filters( 'det_display_environment_type', $display ) === true );
+			// Return the filtered boolean.
+			return $display;
 		}
 
 
