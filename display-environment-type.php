@@ -58,7 +58,7 @@ if( ! class_exists( 'Display_Environment_Type' ) ){
 				// Check if the environment type is not empty before generating output.
 				if( !empty( $env_type ) ) {
 					// Add the new item to the array.
-					$items[] = '<span class="det-env-type det-' . $env_type . '" title="' .  __( 'Environment Type', 'display-environment-type' ) . '">' . ucfirst( $env_type ) . '</span>';
+					$items[] = '<span class="' . esc_attr( 'det-env-type det-' . $env_type ) . '" title="' .  esc_attr__( 'Environment Type', 'display-environment-type' ) . '">' . esc_html( ucfirst( $env_type ) ) . '</span>';
 				}
 			}
 			return $items;
@@ -78,7 +78,7 @@ if( ! class_exists( 'Display_Environment_Type' ) ){
 					$admin_bar->add_menu( array(
 						'id'    => 'det_env_type',
 						'parent'=> 'top-secondary',
-						'title' => '<span class="ab-icon"></span><span class="ab-label">' . ucfirst( $env_type ) . '</span>',
+						'title' => '<span class="ab-icon"></span><span class="ab-label">' . esc_html( ucfirst( $env_type ) ) . '</span>',
 						'meta'  => array(
 							'title' => __( 'Environment Type', 'display-environment-type' ),
 							'class' => 'det-' . sanitize_title( $env_type ),
