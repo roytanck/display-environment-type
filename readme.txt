@@ -27,7 +27,7 @@ The colors a currently fixed. This was done to avoid possible confusion. If the 
  
 = What will happen when I define custom environment types? =
  
-Custom types will be displayed in blue, with a lightbulb icon. There's currently no way to set different colors for your custom types is you have more than one.
+Custom types will be displayed in blue, with a lightbulb icon. There's currently no way to set different colors for your custom types if you have more than one.
 
 = Why is there no display on the front-end of the site, for logged-in users with the admin bar enabled? =
 
