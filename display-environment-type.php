@@ -44,7 +44,7 @@ if( ! class_exists( 'Display_Environment_Type' ) ){
 				// Check if the environment type is not empty before generating output.
 				if( !empty( $env_type ) ){
 					// Add the new item to the array.
-					$items[] = '<span class="det-env-type" title="' .  __( 'Environment Type', 'display-environment-type' ) . '">' . ucfirst( $env_type ) . '</span>';
+					$items[] = '<span class="det-env-type det-' . $env_type . '" title="' .  __( 'Environment Type', 'display-environment-type' ) . '">' . ucfirst( $env_type ) . '</span>';
 				}
 			}
 			return $items;
