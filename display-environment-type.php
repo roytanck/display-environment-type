@@ -29,8 +29,10 @@ if( ! class_exists( 'Display_Environment_Type' ) ){
 			add_filter( 'dashboard_glance_items', array( $this, 'add_glance_item' ), 10, 1 );
 			// Add CSS code for the glace item.
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles' ) );
-			// Add an admin bar item.
-			add_action( 'admin_bar_menu', array( $this, 'add_toolbar_item' ) );
+			// Add an admin bar item if in wp-admin.
+			if( is_admin() ){
+				add_action( 'admin_bar_menu', array( $this, 'add_toolbar_item' ) );
+			}
 		}
 
 
