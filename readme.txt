@@ -4,7 +4,7 @@ Tags: environment type, dtap, production, staging, development
 Requires at least: 5.5
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3
 
 Displays WordPress 5.5's new environment type setting in the admin bar and the 'at a glance' dashboard widget. 
@@ -19,6 +19,20 @@ WordPress 5.5 introduces a way to differentiate between environment types (devel
 
 1. Install and activate using the 'Plugins' menu in WordPress.
 
+== Frequently Asked Questions ==
+ 
+= Can I set custom color for my environment types? =
+ 
+The colors a currently fixed. This was done to avoid possible confusion. If the colors were user-configurable, they would need to be set up exactly the same on all related servers.
+ 
+= What will happen when I define custom environment types? =
+ 
+Custom types will be displayed in blue, with a lightbulb icon. There's currently no way to set different colors for your custom types is you have more than one.
+
+= Why is there no display on the front-end of the site, for logged-in users with the admin bar enabled? =
+
+The reasoning behind this is that in most cases, you'd probably not want to bother logged-in subscribers with a bright-colored box in their admin abr. Also, I didn't want to load the CSS file on the front end. Perhaps front end display should be based on roles in future versions.
+
 == Screenshots ==
  
 1. Admin bar display.
@@ -26,8 +40,12 @@ WordPress 5.5 introduces a way to differentiate between environment types (devel
  
 == Changelog ==
 
-= 1.0.1 =
+= 1.0.2 (2020-08-21) =
+* Removed the (unstyled) display on the front-end admin bar.
+* Added a FAQ section to the readme file.
+
+= 1.0.1 (2020-08-21) =
 * Fixed the plugin description and plugin URI.
 
-= 1.0 =
+= 1.0 (2020-08-20) =
 * Initial release.
