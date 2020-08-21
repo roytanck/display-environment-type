@@ -1,5 +1,5 @@
 === Display Environment Type ===
-Contributors: roytanck
+Contributors: roytanck, markjaquith
 Tags: environment type, dtap, production, staging, development
 Requires at least: 5.5
 Tested up to: 5.5
