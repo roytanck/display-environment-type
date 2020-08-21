@@ -3,7 +3,7 @@
  * Plugin Name:       Display Environment Type
  * Plugin URI:        https://roytanck.com/2020/08/21/new-wordpress-plugin-display-environment-type/
  * Description:       Display the site's environment type in wp-admin.
- * Version:           1.1
+ * Version:           1.2
  * Requires at least: 5.5
  * Requires PHP:      5.6
  * Author:            Roy Tanck
@@ -104,7 +104,16 @@ if( ! class_exists( 'Display_Environment_Type' ) ){
 					$display = true;
 				}
 			}
-			// Filter the return value (boolean).
+			/**
+			 * Filter whether or not the environent type should be displayed.
+			 *
+			 * Allows you to perform checks like user capabilities or is_admin()
+			 * and return true to display the environment type, or false to not.
+			 *
+			 * @since 1.2
+			 *
+			 * @param boolean $display Should the environment type be displayed?
+			 */
 			$display = ( apply_filters( 'det_display_environment_type', $display ) === true );
 			// Return the filtered boolean.
 			return $display;

@@ -4,7 +4,7 @@ Tags: environment type, dtap, production, staging, development
 Requires at least: 5.5
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv3
 
 Displays WordPress 5.5's new environment type setting in the admin bar and the 'at a glance' dashboard widget.
@@ -33,12 +33,23 @@ Custom types will be displayed in blue, with a lightbulb icon. There's currently
 
 There's no display for non-admin users. The reasoning behind this is that in most cases, you'd probably not want to bother logged-in subscribers with a bright-colored box on their admin bar.
 
+For additional control, you can use the 'det_display_environment_type' filter hook:
+
+    function rt_det_display_filter( $display ){
+        // Disable the environment type display for user ID 2.
+        return ( get_current_user_id() !== 2 );
+    }
+    add_filter( 'det_display_environment_type', 'rt_det_display_filter' );
+
 == Screenshots ==
  
 1. Admin bar display.
 2. The 'at a glance' widget.
  
 == Changelog ==
+
+= 1.2 (2020-08-21) =
+* Adds a filter hook to allow you to determine whether the environmment is displayed.
 
 = 1.1 (2020-08-21) =
 * Added a conditional front-end display (admins only).
