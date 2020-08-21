@@ -31,7 +31,7 @@ Custom types will be displayed in blue, with a lightbulb icon. There's currently
 
 = Why is there no display on the front-end of the site, for logged-in users with the admin bar enabled? =
 
-The reasoning behind this is that in most cases, you'd probably not want to bother logged-in subscribers with a bright-colored box in their admin abr. Also, I didn't want to load the CSS file on the front end. Perhaps front end display should be based on roles in future versions.
+There's no display for non-admin users. The reasoning behind this is that in most cases, you'd probably not want to bother logged-in subscribers with a bright-colored box in their admin bar.
 
 == Screenshots ==
  
