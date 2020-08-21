@@ -22,29 +22,41 @@ if( ! class_exists( 'Display_Environment_Type' ) ){
 	class Display_Environment_Type {
 
 		/**
-		 * Init function that adds functions to hooks
+		 * Initialize the plugin.
 		 */
-		public function init(){
+		public function init() {
+			// Wait for init to actually do anything.
+			add_action( 'init', array( $this, 'setup_hooks' ) );
+		}
+
+
+		/**
+		 * Adds functions to hooks
+		 */
+		public function setup_hooks() {
+			// Bail out of no display needed.
+			if( ! $this->check_display() ) {
+				return;
+			}
 			// Add an item to the "at a glance" dashboard widget.
 			add_filter( 'dashboard_glance_items', array( $this, 'add_glance_item' ), 10, 1 );
-			// Add CSS code for the glace item.
-			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 			// Add an admin bar item if in wp-admin.
-			if( is_admin() ){
-				add_action( 'admin_bar_menu', array( $this, 'add_toolbar_item' ) );
-			}
+			add_action( 'admin_bar_menu', array( $this, 'add_toolbar_item' ) );
+			// Add CSS code.
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		}
 
 
 		/**
 		 * Adds the "at a glance" item.
 		 */
-		public function add_glance_item( $items ){
+		public function add_glance_item( $items ) {
 			// Check if the environment type function is available.
-			if( function_exists( 'wp_get_environment_type' ) ){
+			if( function_exists( 'wp_get_environment_type' ) ) {
 				$env_type = wp_get_environment_type();
 				// Check if the environment type is not empty before generating output.
-				if( !empty( $env_type ) ){
+				if( !empty( $env_type ) ) {
 					// Add the new item to the array.
 					$items[] = '<span class="det-env-type det-' . $env_type . '" title="' .  __( 'Environment Type', 'display-environment-type' ) . '">' . ucfirst( $env_type ) . '</span>';
 				}
@@ -56,12 +68,12 @@ if( ! class_exists( 'Display_Environment_Type' ) ){
 		/**
 		 * Adds an admin bar item.
 		 */
-		public function add_toolbar_item( $admin_bar ){
+		public function add_toolbar_item( $admin_bar ) {
 			// Check if the environment type function is available.
-			if( function_exists( 'wp_get_environment_type' ) ){
+			if( function_exists( 'wp_get_environment_type' ) ) {
 				$env_type = wp_get_environment_type();
 				// Check if the environment type is not empty before generating output.
-				if( !empty( $env_type ) ){
+				if( !empty( $env_type ) ) {
 					// Add the admin bar item.
 					$admin_bar->add_menu( array(
 						'id'    => 'det_env_type',
@@ -78,9 +90,30 @@ if( ! class_exists( 'Display_Environment_Type' ) ){
 
 
 		/**
+		 * Determine whether or not to display the environment type.
+		 */
+		private function check_display() {
+			// Don't display if no user logged in.
+			if( ! is_user_logged_in() ) {
+				return false;
+			}
+			// Always display if in wp-admin.
+			if( is_admin() ) {
+				return true;
+			}
+			// Display on the front-end only if user has certain capability.
+			if( current_user_can( 'manage_options' ) ) {
+				return true;
+			}
+			// Default: false.
+			return false;
+		}
+
+
+		/**
 		 * Enqueues a small admin CSS stylesheet.
 		 */
-		public function enqueue_styles( $hook ){
+		public function enqueue_styles( $hook ) {
 			// Enqueue admin CSS.
 			wp_enqueue_style( 'det_admin_css', plugin_dir_url( __FILE__ ) . 'css/admin.css' );
 		}
