@@ -43,8 +43,11 @@ For additional control, you can use the 'det_display_environment_type' filter ho
 
 == Screenshots ==
  
-1. Admin bar display.
-2. The 'at a glance' widget.
+1. Admin bar display (production).
+2. Admin bar display (staging).
+3. Admin bar display (development).
+4. Admin bar display (custom).
+5. The 'at a glance' widget.
  
 == Changelog ==
 
