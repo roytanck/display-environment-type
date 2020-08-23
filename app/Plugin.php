@@ -5,6 +5,8 @@ namespace RoyTanck\DisplayEnvironmentType;
 defined( 'ABSPATH' ) or exit;
 
 class Plugin {
+	use Traits\Utilities;
+
 	const STYLESHEET_HANDLE = 'det-toolbar-styles';
 
 	/**
@@ -44,15 +46,6 @@ class Plugin {
 		// Add styling.
 		add_action( 'admin_enqueue_scripts', [ $class, 'enqueue_styles' ] );
 		add_action( 'wp_enqueue_scripts', [ $class, 'enqueue_styles' ] );
-	}
-
-	/**
-	 * Returns the fully-qualified classname.
-	 *
-	 * @return string The fully-qualified classname.
-	 */
-	public static function get_class() {
-		return "\\" . static::class;
 	}
 
 	/**
@@ -130,17 +123,6 @@ class Plugin {
 		$display = (bool) apply_filters( 'det_display_environment_type', $display );
 
 		return $display;
-	}
-
-	/**
-	 * Returns the URL to the plugin's base directory, with optional path appended.
-	 *
-	 * @param string $append_path An additional URL path to append to the base URL.
-	 * 
-	 * @return string The plugin's base directory URL (with trailing slash), plus any path that was passed.
-	 */
-	public static function get_url( $append_path = '' ) {
-		return plugin_dir_url( dirname( __DIR__ ) . '/display-environment-type.php' ) . $append_path;
 	}
 
 	/**

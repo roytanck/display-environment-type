@@ -15,6 +15,7 @@ namespace RoyTanck\DisplayEnvironmentType;
 
 defined( 'ABSPATH' ) or exit;
 
+include __DIR__ . '/app/Traits/Utilities.php';
 include __DIR__ . '/app/Plugin.php';
 
 Plugin::init();
