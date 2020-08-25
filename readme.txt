@@ -4,7 +4,7 @@ Tags: environment type, dtap, production, staging, development
 Requires at least: 5.5
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 1.2.1
+Stable tag: 1.3
 License: GPLv3
 
 Displays WordPress 5.5's new environment type setting in the admin bar and the 'at a glance' dashboard widget.
@@ -31,7 +31,7 @@ Custom types will be displayed in blue, with a lightbulb icon. There's currently
 
 = Why is there no display on the front-end of the site, for logged-in users with the admin bar enabled? =
 
-There's no display for non-admin users. The reasoning behind this is that in most cases, you'd probably not want to bother logged-in subscribers with a bright-colored box on their admin bar.
+There's no display for non-admin users. The reasoning behind this is that in most cases, you'd probably not want to bother logged-in subscribers with a bright-colored box on their admin bar. For the same reason, the environment type is also hidden for subscribers in wp-admin.
 
 For additional control, you can use the 'det_display_environment_type' filter hook:
 
@@ -51,9 +51,13 @@ For additional control, you can use the 'det_display_environment_type' filter ho
  
 == Changelog ==
 
+= 1.3 (2020-08-25) =
+* Code refactor (thank you, @markjaquith).
+* Environment type now hidden by default for subscribers.
+
 = 1.2.1 (2020-08-23) =
-* Removes the distracting hover effect (thank you, @markjaquith)
-* Hardening against XSS (props @markjaquith)
+* Removes the distracting hover effect (thank you, @markjaquith).
+* Hardening against XSS (props @markjaquith).
 
 = 1.2 (2020-08-21) =
 * Adds a filter hook to allow you to determine whether the environmment is displayed.
