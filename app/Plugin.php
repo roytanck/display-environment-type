@@ -103,8 +103,10 @@ class Plugin {
 		}
 
 		if ( is_admin() ) {
-			// Always display if in wp-admin.
-			$display = true;
+			// Display in wp-admin for any role above subscriber.
+			if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
+				$display = true;
+			}
 		} elseif ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
 			// Display on the front-end only if user has the manage_options capability.
 			$display = true;
