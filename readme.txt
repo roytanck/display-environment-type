@@ -2,7 +2,7 @@
 Contributors: roytanck, markjaquith
 Tags: environment type, dtap, production, staging, development
 Requires at least: 5.5
-Tested up to: 5.5
+Tested up to: 5.6
 Requires PHP: 5.6
 Stable tag: 1.3
 License: GPLv3
@@ -27,7 +27,7 @@ The colors are currently fixed. This was done to avoid possible confusion. If th
  
 = What will happen when I define custom environment types? =
  
-Custom types will be displayed in blue, with a lightbulb icon. There's currently no way to set different colors for your custom types if you have more than one.
+Custom types were originally added in WordPress 5.5, but they were removed in 5.5.1. This plugin no longer supports them.
 
 = Why is there no display on the front-end of the site, for logged-in users with the admin bar enabled? =
 
