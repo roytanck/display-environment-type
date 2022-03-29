@@ -101,6 +101,11 @@ class Plugin {
 		if ( ! function_exists( 'wp_get_environment_type' ) ) {
 			return false;
 		}
+		
+		// If the admin bar is not showing there is no place to display the environment type.
+		if ( ! is_admin_bar_showing() ) {
+			return false;
+		}
 
 		if ( is_admin() ) {
 			// Display in wp-admin for any role above subscriber.
