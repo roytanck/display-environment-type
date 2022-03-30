@@ -4,7 +4,7 @@ Tags: environment type, dtap, production, staging, development
 Requires at least: 5.5
 Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 1.3
+Stable tag: 1.3.1
 License: GPLv3
 
 Displays WordPress 5.5's new environment type setting in the admin bar and the 'at a glance' dashboard widget.
@@ -50,6 +50,9 @@ For additional control, you can use the 'det_display_environment_type' filter ho
 5. The 'at a glance' widget.
  
 == Changelog ==
+
+= 1.3.1 (2022-03-30) =
+* Skip loading of the CSS file on the front end if toolbar is hidden (thanks @tflight).
 
 = 1.3 (2020-08-25) =
 * Code refactor (thank you, @markjaquith).
