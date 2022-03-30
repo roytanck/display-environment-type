@@ -1,5 +1,5 @@
 === Display Environment Type ===
-Contributors: roytanck, markjaquith
+Contributors: roytanck, markjaquith, tflight
 Tags: environment type, dtap, production, staging, development
 Requires at least: 5.5
 Tested up to: 5.9
