@@ -1,8 +1,8 @@
 === Display Environment Type ===
-Contributors: roytanck, markjaquith
+Contributors: roytanck, markjaquith, tflight
 Tags: environment type, dtap, production, staging, development
 Requires at least: 5.5
-Tested up to: 5.9
+Tested up to: 6.1
 Requires PHP: 5.6
 Stable tag: 1.3.1
 License: GPLv3
