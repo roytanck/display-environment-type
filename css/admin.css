@@ -17,13 +17,16 @@
 }
 
 /* Admin bar background colors */
-#wpadminbar ul li#wp-admin-bar-det_env_type .ab-label {
-	color: #fff;
+
+#wpadminbar ul li#wp-admin-bar-det_env_type .ab-label,
+#wpadminbar ul li#wp-admin-bar-det_env_type .ab-item {
+	color: inherit;
 }
 
 #wpadminbar ul li#wp-admin-bar-det_env_type {
 	pointer-events: none;
 	background-color: #0080a8;
+	color: #fff;
 }
 
 #wpadminbar ul li#wp-admin-bar-det_env_type.det-production {
@@ -32,9 +35,6 @@
 
 #wpadminbar ul li#wp-admin-bar-det_env_type.det-staging {
 	background-color: #d79d00;
-}
-#wpadminbar ul li#wp-admin-bar-det_env_type.det-staging .ab-label,
-#wpadminbar ul li#wp-admin-bar-det_env_type.det-staging .ab-icon::before {
 	color: #000;
 }
 
@@ -47,6 +47,7 @@
 #wp-admin-bar-det_env_type > div > span.ab-icon:before {
 	content: "\f339";
 	top: 2px;
+	color: inherit;
 }
 
 #wp-admin-bar-det_env_type.det-production > div > span.ab-icon:before {
