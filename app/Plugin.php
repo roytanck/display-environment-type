@@ -81,7 +81,6 @@ class Plugin {
 				'parent'=> 'top-secondary',
 				'title' => '<span class="ab-icon" aria-hidden="true"></span><span class="ab-label">' . esc_html( ucfirst( $env_type ) ) . '</span>',
 				'meta'  => array(
-					'title' => __( 'Environment Type', 'display-environment-type' ),
 					'class' => 'det-' . sanitize_title( $env_type ),
 				),
 			));
