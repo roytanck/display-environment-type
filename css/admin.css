@@ -1,18 +1,18 @@
 /* At a glance icons */
 
-#dashboard_right_now li > span.det-env-type:before {
+#dashboard_right_now li > span.det-env-type::before {
 	content: "\f339";
 }
 
-#dashboard_right_now li > span.det-env-type.det-production:before {
+#dashboard_right_now li > span.det-env-type.det-production::before {
 	content: "\f319";
 }
 
-#dashboard_right_now li > span.det-env-type.det-staging:before {
+#dashboard_right_now li > span.det-env-type.det-staging::before {
 	content: "\f111";
 }
 
-#dashboard_right_now li > span.det-env-type.det-development:before {
+#dashboard_right_now li > span.det-env-type.det-development::before {
 	content: "\f107";
 }
 
@@ -44,23 +44,23 @@
 
 /* Admin bar icons */
 
-#wp-admin-bar-det_env_type > div > span.ab-icon:before {
+#wp-admin-bar-det_env_type > div > span.ab-icon::before {
 	content: "\f339";
 	top: 2px;
 	color: inherit;
 }
 
-#wp-admin-bar-det_env_type.det-production > div > span.ab-icon:before {
+#wp-admin-bar-det_env_type.det-production > div > span.ab-icon::before {
 	content: "\f319";
 	top: 3px;
 }
 
-#wp-admin-bar-det_env_type.det-staging > div > span.ab-icon:before {
+#wp-admin-bar-det_env_type.det-staging > div > span.ab-icon::before {
 	content: "\f111";
 	top: 1px;
 }
 
-#wp-admin-bar-det_env_type.det-development > div > span.ab-icon:before {
+#wp-admin-bar-det_env_type.det-development > div > span.ab-icon::before {
 	content: "\f107";
 	top: 2px;
 }
