@@ -1,10 +1,10 @@
 === Display Environment Type ===
-Contributors: roytanck, markjaquith, tflight
+Contributors: roytanck, markjaquith, tflight, mrwweb
 Tags: environment type, dtap, production, staging, development
 Requires at least: 5.5
-Tested up to: 6.1
+Tested up to: 6.4
 Requires PHP: 5.6
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv3
 
 Displays WordPress 5.5's new environment type setting in the admin bar and the 'at a glance' dashboard widget.
@@ -50,6 +50,9 @@ For additional control, you can use the 'det_display_environment_type' filter ho
 5. The 'at a glance' widget.
  
 == Changelog ==
+
+= 1.3.2 (2023-11-10) =
+* Assessibility improvements by @mrwweb.
 
 = 1.3.1 (2022-03-30) =
 * Skip loading of the CSS file on the front end if toolbar is hidden (thanks @tflight).
