@@ -49,6 +49,28 @@ class Plugin {
 	}
 
 	/**
+	 * Make development type i18n.
+	 *
+	 * @param string $env_type The environment type.
+	 *
+	 * @return string The translated environment type.
+	 */
+	public static function get_env_type_name( $env_type ) {
+		switch ( $env_type ) {
+			case 'local':
+				return __( 'Local', 'display-environment-type' );
+			case 'development':
+				return __( 'Development', 'display-environment-type' );
+			case 'staging':
+				return __( 'Staging', 'display-environment-type' );
+			case 'production':
+				return __( 'Production', 'display-environment-type' );
+			default:
+				return __( 'Production', 'display-environment-type' );
+		}
+	}
+
+	/**
 	 * Adds the "at a glance" item.
 	 * 
 	 * @param array $items The current "at a glance" items.
@@ -57,9 +79,10 @@ class Plugin {
 	 */
 	public static function add_glance_item( $items ) {
 		$env_type = wp_get_environment_type();
+		$env_type_name = self::get_env_type_name( $env_type );
 
 		if ( !empty( $env_type ) ) {
-			$items[] = '<span class="' . esc_attr( 'det-env-type det-' . $env_type ) . '" title="' .  esc_attr__( 'Environment Type', 'display-environment-type' ) . '">' . esc_html( ucfirst( $env_type ) ) . '</span>';
+			$items[] = '<span class="' . esc_attr( 'det-env-type det-' . $env_type ) . '" title="' .  esc_attr__( 'Environment Type', 'display-environment-type' ) . '">' . esc_html( $env_type_name ) . '</span>';
 		}
 
 		return $items;
@@ -74,12 +97,13 @@ class Plugin {
 	 */
 	public static function add_toolbar_item( $admin_bar ) {
 		$env_type = wp_get_environment_type();
+		$env_type_name = self::get_env_type_name( $env_type );
 
 		if ( !empty( $env_type ) ) {
 			$admin_bar->add_menu( array(
 				'id'    => 'det_env_type',
 				'parent'=> 'top-secondary',
-				'title' => '<span class="ab-icon" aria-hidden="true"></span><span class="ab-label">' . esc_html( ucfirst( $env_type ) ) . '</span>',
+				'title' => '<span class="ab-icon" aria-hidden="true"></span><span class="ab-label">' . esc_html( $env_type_name ) . '</span>',
 				'meta'  => array(
 					'class' => 'det-' . sanitize_title( $env_type ),
 				),

@@ -4,7 +4,7 @@ Tags: environment type, dtap, production, staging, development
 Requires at least: 5.5
 Tested up to: 6.5
 Requires PHP: 5.6
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv3
 
 Displays WordPress 5.5's new environment type setting in the admin bar and the 'at a glance' dashboard widget.
