@@ -2,7 +2,7 @@
 Contributors: roytanck, markjaquith, tflight, mrwweb, tekapo
 Tags: environment type, dtap, production, staging, development
 Requires at least: 5.5
-Tested up to: 6.5
+Tested up to: 6.6
 Requires PHP: 5.6
 Stable tag: 1.3.3
 License: GPLv3
