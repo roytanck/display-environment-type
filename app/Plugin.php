@@ -41,7 +41,7 @@ class Plugin {
 		add_filter( 'dashboard_glance_items', [ $class, 'add_glance_item' ] );
 
 		// Add an admin bar item if in wp-admin.
-		add_action( 'admin_bar_menu', [ $class, 'add_toolbar_item' ] );
+		add_action( 'admin_bar_menu', [ $class, 'add_toolbar_item' ], 7 );
 
 		// Add styling.
 		add_action( 'admin_enqueue_scripts', [ $class, 'enqueue_styles' ] );

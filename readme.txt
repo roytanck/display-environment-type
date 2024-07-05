@@ -1,5 +1,5 @@
 === Display Environment Type ===
-Contributors: roytanck, markjaquith, tflight, mrwweb
+Contributors: roytanck, markjaquith, tflight, mrwweb, tekapo
 Tags: environment type, dtap, production, staging, development
 Requires at least: 5.5
 Tested up to: 6.5
@@ -50,6 +50,9 @@ For additional control, you can use the 'det_display_environment_type' filter ho
 5. The 'at a glance' widget.
  
 == Changelog ==
+
+= 1.3.3 (2024-07-05) =
+* Internationalization improvements by @tekapo.
 
 = 1.3.2 (2023-11-10) =
 * Assessibility improvements by @mrwweb.
