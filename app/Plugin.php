@@ -56,18 +56,28 @@ class Plugin {
 	 * @return string The translated environment type.
 	 */
 	public static function get_env_type_name( $env_type ) {
+		$name = '';
 		switch ( $env_type ) {
 			case 'local':
-				return __( 'Local', 'display-environment-type' );
+				$name = __( 'Local', 'display-environment-type' );
+				break;
 			case 'development':
-				return __( 'Development', 'display-environment-type' );
+				$name = __( 'Development', 'display-environment-type' );
+				break;
 			case 'staging':
-				return __( 'Staging', 'display-environment-type' );
-			case 'production':
-				return __( 'Production', 'display-environment-type' );
+				$name = __( 'Staging', 'display-environment-type' );
+				break;
 			default:
-				return __( 'Production', 'display-environment-type' );
+				$name = __( 'Production', 'display-environment-type' );
 		}
+
+		/**
+		 * Filter the environment type name.
+		 *
+		 * @param string $name     The translated environment name.
+		 * @param string $env_type The environment type key.
+		 */
+		return apply_filters( 'display_environment_type_name', $name, $env_type );
 	}
 
 	/**
