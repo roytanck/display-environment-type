@@ -1,10 +1,10 @@
 === Display Environment Type ===
-Contributors: roytanck, markjaquith, tflight, mrwweb, tekapo, sdobreff
+Contributors: sdobreff, roytanck, markjaquith, tflight, mrwweb, tekapo
 Tags: environment, dtap, production, staging, development
 Requires at least: 5.5
-Tested up to: 6.7.2
+Tested up to: 6.8.1
 Requires PHP: 7.4
-Stable tag: 1.4.1
+Stable tag: 1.5.0
 License: GPLv3
 
 Displays WordPress 5.5's new environment type setting in the admin bar and the 'at a glance' dashboard widget.
@@ -14,10 +14,15 @@ Displays WordPress 5.5's new environment type setting in the admin bar and the '
 WordPress 5.5 introduces a way to differentiate between environment types (development, staging, production). This plugin displays your site's environment type on the admin bar.
 
 [More info about the new feature](https://make.wordpress.org/core/2020/07/24/new-wp_get_environment_type-function-in-wordpress-5-5/)
+
+To gain more control, and setting environment and other values directly from the WP admin (if wp-config.php is writable), install our plugin **[WP Control](https://wordpress.org/plugins/0-day-analytics/)**
  
 == Installation ==
 
 1. Install and activate using the 'Plugins' menu in WordPress.
+
+== Recommended Plugins ==
+* [WP Control](https://wordpress.org/plugins/0-day-analytics/) - is a powerful plugin designed for WordPress sites with extensive error logs. It allows administrators to check what is going on on their WP sites. It also has built-in: Cron manager, Transient manager (DB based) and Plugins Version Switcher directly from the plugins page.
 
 == Frequently Asked Questions ==
  
@@ -51,8 +56,8 @@ For additional control, you can use the 'det_display_environment_type' filter ho
  
 == Changelog ==
 
-= 1.4.1 (2024-04-09) =
-* Fixed UI problem with staging and drop-down menu becomes unreadable (thanks @ericsackett).
+= 1.5.0 (2024-07-01) =
+* Code improvements, shows the constants value regardless of the WP_DEBUG constant value. WP Control plugin introduced
 
 = 1.4.0 (2024-04-07) =
 * Code improvements and UI fixes - showing icon on mobile, and set colors on At a Glance. Added WP version in drop-down menu.

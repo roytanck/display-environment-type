@@ -146,57 +146,55 @@ if ( ! class_exists( '\DET\Display_Environment_Type' ) ) {
 					)
 				);
 
-				if ( WP_DEBUG ) {
-					$admin_bar->add_node(
-						array(
-							'id'     => 'det-wp-debug-log',
-							'title'  => self::show_label_value( 'WP_DEBUG_LOG', ( WP_DEBUG_LOG ? 'true' : 'false' ) ),
-							'parent' => 'det_env_type',
-							'meta'   => array(
-								'title' => WP_DEBUG_LOG,
-							),
-						)
-					);
+				$admin_bar->add_node(
+					array(
+						'id'     => 'det-wp-debug-log',
+						'title'  => self::show_label_value( 'WP_DEBUG_LOG', ( WP_DEBUG_LOG ? 'true' : 'false' ) ),
+						'parent' => 'det_env_type',
+						'meta'   => array(
+							'title' => WP_DEBUG_LOG,
+						),
+					)
+				);
 
-					$admin_bar->add_node(
-						array(
-							'id'     => 'det-wp-debug-display',
-							'title'  => self::show_label_value( 'WP_DEBUG_DISPLAY', ( WP_DEBUG_DISPLAY ? 'true' : 'false' ) ),
-							'parent' => 'det_env_type',
-						)
-					);
+				$admin_bar->add_node(
+					array(
+						'id'     => 'det-wp-debug-display',
+						'title'  => self::show_label_value( 'WP_DEBUG_DISPLAY', ( WP_DEBUG_DISPLAY ? 'true' : 'false' ) ),
+						'parent' => 'det_env_type',
+					)
+				);
 
-					$wp_development_mode = ( function_exists( 'wp_get_development_mode' ) ? \wp_get_development_mode() : null );
+				$wp_development_mode = ( function_exists( 'wp_get_development_mode' ) ? \wp_get_development_mode() : null );
 
-					if ( null !== $wp_development_mode ) {
-						if ( empty( $wp_development_mode ) ) {
-							$wp_development_mode = 'false';
-						}
-						$admin_bar->add_node(
-							array(
-								'id'     => 'det-wp-development-mode',
-								'title'  => self::show_label_value( 'WP_DEVELOPMENT_MODE', $wp_development_mode ),
-								'parent' => 'det_env_type',
-							)
-						);
+				if ( null !== $wp_development_mode ) {
+					if ( empty( $wp_development_mode ) ) {
+						$wp_development_mode = 'false';
 					}
-
 					$admin_bar->add_node(
 						array(
-							'id'     => 'det-script-display',
-							'title'  => self::show_label_value( 'SCRIPT_DEBUG', ( SCRIPT_DEBUG ? 'true' : 'false' ) ),
-							'parent' => 'det_env_type',
-						)
-					);
-
-					$admin_bar->add_node(
-						array(
-							'id'     => 'det-savequeries',
-							'title'  => self::show_label_value( 'SAVEQUERIES', ( defined( 'SAVEQUERIES' ) && SAVEQUERIES ? 'true' : 'false' ) ),
+							'id'     => 'det-wp-development-mode',
+							'title'  => self::show_label_value( 'WP_DEVELOPMENT_MODE', $wp_development_mode ),
 							'parent' => 'det_env_type',
 						)
 					);
 				}
+
+				$admin_bar->add_node(
+					array(
+						'id'     => 'det-script-display',
+						'title'  => self::show_label_value( 'SCRIPT_DEBUG', ( SCRIPT_DEBUG ? 'true' : 'false' ) ),
+						'parent' => 'det_env_type',
+					)
+				);
+
+				$admin_bar->add_node(
+					array(
+						'id'     => 'det-savequeries',
+						'title'  => self::show_label_value( 'SAVEQUERIES', ( defined( 'SAVEQUERIES' ) && \SAVEQUERIES ? 'true' : 'false' ) ),
+						'parent' => 'det_env_type',
+					)
+				);
 
 				$admin_bar->add_node(
 					array(
@@ -288,9 +286,9 @@ if ( ! class_exists( '\DET\Display_Environment_Type' ) ) {
 		public static function enqueue_styles() {
 			\wp_enqueue_style(
 				self::STYLESHEET_HANDLE,
-				DET_PLUGIN_ROOT_URL . 'css/admin.css',
+				\DET_PLUGIN_ROOT_URL . 'css/admin.css',
 				array(),
-				DET_VERSION
+				\DET_VERSION
 			);
 		}
 	}

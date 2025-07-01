@@ -3,7 +3,7 @@
  * Plugin Name:       Display Environment Type
  * Plugin URI:        https://roytanck.com/2020/08/21/new-wordpress-plugin-display-environment-type/
  * Description:       Display the site's environment type in wp-admin.
- * Version:           1.4.1
+ * Version:           1.5.0
  * Requires at least: 5.5
  * Requires PHP:      7.4
  * Author:            Stoil Dobreff
@@ -17,7 +17,7 @@ use DET\Display_Environment_Type;
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'DET_VERSION', '1.4.1' );
+define( 'DET_VERSION', '1.5.0' );
 define( 'DET_TEXTDOMAIN', 'display-environment-type' );
 define( 'DET_NAME', 'Display Environment Type' );
 define( 'DET_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
