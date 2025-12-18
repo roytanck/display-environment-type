@@ -1,0 +1,97 @@
+/**
+ * Block Editor Styles for Display Environment Type
+ */
+
+/* Environment Indicator (next to save button) */
+.det-editor-indicator {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 6px 12px;
+	margin-right: 12px;
+	color: #fff;
+	font-weight: 500;
+	font-size: 13px;
+	background-color: #0080a8;
+	border-radius: 4px;
+	cursor: help;
+	white-space: nowrap;
+	transition: opacity 0.2s;
+}
+
+.det-editor-indicator:hover {
+	opacity: 0.9;
+}
+
+.det-editor-indicator .det-icon::before {
+	content: "\f339";
+	font-family: dashicons;
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	line-height: 1;
+}
+
+.det-editor-indicator .det-text {
+	line-height: 1;
+}
+
+/* Production Environment */
+.det-editor-indicator.det-production {
+	background-color: #b92a2a;
+}
+
+.det-editor-indicator.det-production .det-icon::before {
+	content: "\f319";
+}
+
+/* Staging Environment */
+.det-editor-indicator.det-staging {
+	background-color: #d79d00;
+	color: #000;
+}
+
+.det-editor-indicator.det-staging .det-icon::before {
+	content: "\f111";
+}
+
+/* Development Environment */
+.det-editor-indicator.det-development {
+	background-color: #34863b;
+}
+
+.det-editor-indicator.det-development .det-icon::before {
+	content: "\f107";
+}
+
+/* Local Environment */
+.det-editor-indicator.det-local {
+	background-color: #0080a8;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 782px) {
+	.det-editor-indicator {
+		padding: 4px 8px;
+		font-size: 12px;
+		margin-right: 8px;
+	}
+
+	.det-editor-indicator .det-icon::before {
+		font-size: 14px;
+		width: 14px;
+		height: 14px;
+	}
+	
+	.det-editor-indicator .det-text {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.det-editor-indicator {
+		margin-right: 4px;
+		padding: 4px 6px;
+	}
+}

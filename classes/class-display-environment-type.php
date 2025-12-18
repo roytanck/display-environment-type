@@ -121,7 +121,8 @@ if ( ! class_exists( '\DET\Display_Environment_Type' ) ) {
 			$env_type_name = self::get_env_type_name( $env_type );
 
 			if ( ! empty( $env_type ) ) {
-				$items[] = '<span class="' . \esc_attr( 'det-env-type det-' . $env_type ) . '" title="' . \esc_attr__( 'Environment Type', 'display-environment-type' ) . '">' . \esc_html( $env_type_name ) . '</span>';
+				$css_class = 'det-env-type det-' . \sanitize_html_class( (string) $env_type );
+				$items[]   = '<span class="' . \esc_attr( $css_class ) . '" title="' . \esc_attr__( 'Environment Type', 'display-environment-type' ) . '">' . \esc_html( $env_type_name ) . '</span>';
 			}
 
 			return $items;
@@ -147,7 +148,7 @@ if ( ! class_exists( '\DET\Display_Environment_Type' ) ) {
 						'parent' => 'top-secondary',
 						'title'  => '<span class="ab-icon" aria-hidden="true"></span><span class="ab-label">' . \esc_html( $env_type_name ) . '</span>',
 						'meta'   => array(
-							'class' => 'det-' . \sanitize_title( $env_type ),
+							'class' => 'det-' . \sanitize_html_class( (string) $env_type ),
 						),
 					)
 				);
@@ -320,19 +321,27 @@ if ( ! class_exists( '\DET\Display_Environment_Type' ) ) {
 				return;
 			}
 
-			// Ensure jQuery is available for our inline script.
-			\wp_enqueue_script( 'jquery' );
+			// Register a small plugin-specific handle and pass safe data via localization.
+			\wp_register_script( 'det-admin', '', array( 'jquery' ), \DET_VERSION );
+			\wp_enqueue_script( 'det-admin' );
 
-			$ajax_url = \esc_url( \admin_url( 'admin-ajax.php' ) );
-			$nonce    = \wp_create_nonce( 'det_dismiss_recommendation' );
+			// Pass Ajax URL and nonce securely to JS.
+			\wp_localize_script(
+				'det-admin',
+				'detAdmin',
+				array(
+					'ajax_url' => \admin_url( 'admin-ajax.php' ),
+					'nonce'    => \wp_create_nonce( 'det_dismiss_recommendation' ),
+				)
+			);
 
-			$script = <<<NOWDOC
+			$script = <<<'JS'
 			(function($){
 			$(document).on('click', '.det-recommendation .notice-dismiss', function(e){
 				e.preventDefault();
 				var container = $(this).closest('.det-recommendation');
 				if (!container.length) return false;
-				$.post('{$ajax_url}', { action: 'det_dismiss_recommendation', _ajax_nonce: '{$nonce}' }, function(response){
+				$.post(detAdmin.ajax_url, { action: 'det_dismiss_recommendation', _ajax_nonce: detAdmin.nonce }, function(response){
 				if (response.success) {
 					container.fadeOut(300, function(){ $(this).remove(); });
 				}
@@ -340,9 +349,9 @@ if ( ! class_exists( '\DET\Display_Environment_Type' ) ) {
 				return false;
 			});
 			})(jQuery);
-			NOWDOC;
+			JS;
 
-			\wp_add_inline_script( 'jquery', $script );
+			\wp_add_inline_script( 'det-admin', $script );
 		}
 
 		/**
@@ -370,16 +379,26 @@ if ( ! class_exists( '\DET\Display_Environment_Type' ) ) {
 
 			$plugin_url    = 'https://wordpress.org/plugins/0-day-analytics/';
 			$download_url  = 'https://downloads.wordpress.org/plugin/0-day-analytics.zip';
-			$plugin_link   = \esc_url( $plugin_url );
-			$download_link = \esc_url( $download_url );
-			$message       = \sprintf(
-				/* translators: %1$s and %2$s are links */
-				\__( '<strong>Display Environment Type</strong>: If you like this plugin, you gonna love our other one - %1$s - try it out now - %2$s', 'display-environment-type' ),
-				'<a href="' . $plugin_link . '" target="_blank" rel="noopener noreferrer">' . \esc_html__( '0 Day Analytics', 'display-environment-type' ) . '</a>',
-				'<a href="' . $download_link . '" target="_blank" rel="noopener noreferrer">' . \esc_html__( 'download', 'display-environment-type' ) . '</a>'
+			$plugin_anchor  = '<a href="' . \esc_url( $plugin_url ) . '" target="_blank" rel="noopener noreferrer">' . \esc_html__( '0 Day Analytics', 'display-environment-type' ) . '</a>';
+			$download_anchor = '<a href="' . \esc_url( $download_url ) . '" target="_blank" rel="noopener noreferrer">' . \esc_html__( 'download', 'display-environment-type' ) . '</a>';
+
+			/* translators: %1$s and %2$s are HTML links. */
+			$message = \sprintf(
+				\__( '<strong>Display Environment Type</strong>: If you like this plugin, you will love our other one - %1$s - try it out now - %2$s', 'display-environment-type' ),
+				$plugin_anchor,
+				$download_anchor
 			);
 
-			echo '<div class="notice notice-info is-dismissible det-recommendation"><p>' . \wp_kses_post( $message ) . '</p></div>';
+			$allowed = array(
+				'a'      => array(
+					'href'   => true,
+					'target' => true,
+					'rel'    => true,
+				),
+				'strong' => array(),
+			);
+
+			echo '<div class="notice notice-info is-dismissible det-recommendation"><p>' . \wp_kses( $message, $allowed ) . '</p></div>';
 		}
 
 		/**
