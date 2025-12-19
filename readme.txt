@@ -56,7 +56,7 @@ For additional control, use the `det_display_environment_type` filter hook. Exam
 
 == Changelog ==
 
-= 1.5.0 (2025-07-01) =
+= 1.6.0 (2025-12-18) =
 * Code improvements. Added the Gutenberg menu. 0 Day Analytics introduced.
 
 = 1.5.0 (2024-07-01) =
